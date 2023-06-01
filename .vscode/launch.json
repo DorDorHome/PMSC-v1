@@ -1,0 +1,91 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: train",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--arch='hypernetwork_offset_wth_FC_on_3_FC_middle_dim_512_32'",
+                "--use_g_regularization=True",
+                "--batch=16",
+                "LMDB_cat"
+                // "--use_accelerate=False",
+
+
+            ]
+        },
+
+
+
+        {
+            "name": "Python: train from trained stylegan2",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--arch_of_original_model=stylegan2",
+                "--ckpt_of_original_model=checkpoint_original_stylegan2/stylegan2-ffhq-config-f.pt",
+                "--arch=hypernetwork_offset_wth_FC_on_3_FC_middle_dim_512_32_high_res",
+                "--n_sample=25",
+                "--use_g_regularization=True",
+                "--size=1024",
+                "--iter=160000",
+                "--batch=4",
+                "LMDB_PATH",
+                // "--use_accelerate=False",
+               "--ckpt=from_pretrained_high_res_hypernetwork_offset_wth_FC_on_3_FC_middle_dim_512_32_high_res _checkpoint/030000.pt"
+
+
+            ]
+        },
+        {
+            "name": "Python: New Mapping",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--arch_of_original_model=stylegan2",
+                "--ckpt_of_original_model=checkpoint_original_stylegan2/stylegan2-ffhq-config-f.pt",
+                "--arch=hypernetwork_offset_wth_FC_on_3_FC_middle_dim_512_32",
+                "--n_sample=25",
+                "--use_g_regularization=True",
+                "--size=1024",
+                "--iter=2400000",
+                "--batch=4",
+                "LMDB_PATH",
+               // "--use_accelerate=False"
+            ]
+        },
+        {
+            "name": "Debug: walk in latent",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--arch=hypernetwork_offset_wth_FC_on_3_FC_middle_dim_512_32",
+                "--size=256",
+                "--number_of_steps_to_take=4",
+                "--random_seed=3704",
+                "--walk_size_in_latent=0.2",
+                "--ckpt",
+                "hypernetwork_offset_wth_FC_on_3_FC_middle_dim_512_32 _checkpoint/795000.pt"
+            ]
+        },
+        {
+            "type": "node-terminal",
+            "name": "JavaScript Debug Terminal",
+            "request": "launch",
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

@@ -1,0 +1,42 @@
+python backprop_to_find_real_images.py \
+--arch='hypernetwork_offset_wth_FC_on_3_FC_middle_dim_512_32' \
+--size=256 \
+--sample=1 \
+--pics=1 \
+--ckpt='hypernetwork_offset_wth_FC_on_3_FC_middle_dim_512_32 _checkpoint/795000.pt'
+
+python backprop_to_find_real_images.py \
+--arch='hypernetwork_offset_wth_FC_on_3_FC_middle_dim_512_32' \
+--size=256 \
+--sample=1 \
+--pics=1 \
+--random_seed=0 \
+--ckpt='hypernetwork_offset_wth_FC_on_3_FC_middle_dim_512_32 _train_with_unif_True_checkpoint/740000.pt'
+
+# on original model:
+
+python backprop_to_find_real_images.py \
+--arch='stylegan2' \
+--size=256 \
+--sample=1 \
+--pics=1 \
+--ckpt='checkpoint_original_stylegan2/550000.pt'
+
+
+# with langevin correction:
+python backprop_to_find_real_images_with_langevin_correction.py \
+--arch='hypernetwork_offset_wth_FC_on_3_FC_middle_dim_512_32' \
+--size=256 \
+--sample=1 \
+--pics=1 \
+--ckpt='hypernetwork_offset_wth_FC_on_3_FC_middle_dim_512_32 _checkpoint/795000.pt'
+
+# with langevin correction:
+python backprop_to_find_real_images_with_langevin_correction.py \
+--arch='hypernetwork_offset_wth_FC_on_3_FC_middle_dim_512_32' \
+--size=256 \
+--variance_regularizer=0.025 \
+--langevin_correction_constant=0.05 \
+--sample=1 \
+--pics=1 \
+--ckpt='hypernetwork_offset_wth_FC_on_3_FC_middle_dim_512_32 _checkpoint/795000.pt'
