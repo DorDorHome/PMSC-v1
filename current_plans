@@ -1,0 +1,24 @@
+
+
+To train PMSC on other datasets:
+
+cat:
+1. use lsun cat
+   1 a: the key of the default lmdb cat does not match with dataset class used in PMSC
+
+2. a) download cat lsun lmdb, b) convert lmdb into .webp, c) convert .webp files back by prepare_data.py
+
+
+
+Bedroom:
+
+entire lsun dataset was downloaded in external harddish, hdda
+
+
+_________________________________________
+using something other than lsun:
+
+stanford dog dataset is downloaded in hdda
+
+
+
