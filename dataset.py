@@ -21,8 +21,11 @@ class MultiResolutionDataset(Dataset):
 
         with self.env.begin(write=False) as txn:
 
-            print(txn.get('length'.encode('utf-8')))
+            # print(txn.get('length'.encode('utf-8')))
+            # print(txn.get(str(2).encode('utf-8')) )
 
+            # print(txn.get(f'{256}-{str(2).zfill(5)}'.encode('utf-8')))
+            print(txn.get(str(2).encode()), '!!!')
             self.length = int(txn.get('length'.encode('utf-8')).decode('utf-8'))
 
         self.resolution = resolution

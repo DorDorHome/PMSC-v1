@@ -20,5 +20,10 @@ using something other than lsun:
 
 stanford dog dataset is downloaded in hdda
 
+AFHQ packages is in hdda/datasets. See:
+https://github.com/clovaai/stargan-v2
+
+lsun car was downloaded to hdda 
+
 
 
