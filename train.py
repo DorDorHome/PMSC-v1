@@ -629,7 +629,7 @@ def train(args, loader, generator, discriminator, g_optim, d_optim, g_ema, devic
 
 if __name__ == "__main__":
     print('starting device.')
-    device = "cuda:1"
+    device = "cuda:0"
     print('empyting cache')
     torch.cuda.empty_cache()
     print('done empyting cache.')

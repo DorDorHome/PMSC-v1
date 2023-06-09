@@ -1,5 +1,10 @@
 
+# to ensure diversity, add a regularization term:
 
+1. use - Lpips( x_1, x_2) as a loss, where 
+
+
+_______________________________________________
 To train PMSC on other datasets:
 
 cat:
@@ -27,3 +32,4 @@ lsun car was downloaded to hdda
 
 
 
+____

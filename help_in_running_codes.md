@@ -47,6 +47,9 @@ python prepare_data.py --out LMDB_AFHQ --n_work 2 /hdda/datasets/AFHQ/afhq/train
 
 python prepare_data.py --out LMDB_lsun_cow --n_work 2 /hdda/datasets/lsun_cow_single_folder
 
+# create church outdoor dataset:
+python prepare_data.py --out LMDB_lsun_church_outdoor --n_work 2 /hdda/datasets/lsun_from_harddisk/lsun-master/church_outdoor_train_single_folder
+
 
 # codes for moving files from current folders and subfolders into another folder, without the subfolder structrue:
 
@@ -255,9 +258,8 @@ python train.py \
 python train.py \
 --arch='hypernetwork_offset_wth_FC_on_3_FC_middle_dim_512_32' \
 --use_g_regularization=True \
---g_path_regularize_from_z=True \
+--g_path_regularize_from_z=False \
 --iter=800000 \
---ckpt='hypernetwork_offset_wth_FC_on_3_FC_middle_dim_512_32__trained_on_LMDB_AFHQ_use_spectral_False_train_with_unif_False_path_reg_from_z_True_256_checkpoint/0130000.pt' \
 --batch 16 LMDB_AFHQ
 
 # hypernetwork, on the 3-layered FC of each level, trained with lsun bedroom:
@@ -268,6 +270,15 @@ python train.py \
 --g_path_regularize_from_z=True \
 --iter=800000 \
 --batch 16 LMDB_bedroom_train
+
+# hypernetwork, on the 3-layered FC of each level, lsun church outdoor:
+
+python train.py \
+--arch='hypernetwork_offset_wth_FC_on_3_FC_middle_dim_512_32' \
+--use_g_regularization=True \
+--g_path_regularize_from_z=False \
+--iter=800000 \
+--batch 16 LMDB_lsun_church_outdoor
 
 # hypernetwork, on the 3-layered FC of each level, trained with lsun bedroom train set:
 python train.py \
